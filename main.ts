@@ -74,7 +74,7 @@ game.onUpdateInterval(randint(10000, 20000), function () {
 game.onUpdateInterval(randint(100000, 100000), function () {
     for (let index = 0; index < 1; index++) {
         Featther3 = sprites.create(assets.image`black bride1`, SpriteKind.diamond_feather)
-        Featther3.setVelocity(80, 160)
+        Featther3.setVelocity(20, 40)
         Featther3.setPosition(randint(0, scene.screenWidth()), 0)
         animation.runImageAnimation(
         Featther3,
