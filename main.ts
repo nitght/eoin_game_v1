@@ -1,18 +1,42 @@
 namespace SpriteKind {
     export const Gold_Feather = SpriteKind.create()
     export const Silver_Feather = SpriteKind.create()
+    export const diamond_feather = SpriteKind.create()
+    export const Cursed_feather = SpriteKind.create()
 }
+info.onScore(100000, function () {
+    effects.confetti.startScreenEffect()
+    scene.setBackgroundImage(assets.image`clouds`)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.diamond_feather, function (sprite, otherSprite) {
+    info.changeScoreBy(10000)
+    sprites.destroy(otherSprite)
+})
+info.onScore(200000, function () {
+    effects.confetti.startScreenEffect()
+    scene.setBackgroundImage(assets.image`clouds`)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Silver_Feather, function (sprite, otherSprite) {
     info.changeScoreBy(50)
     sprites.destroy(otherSprite)
+})
+info.onScore(0, function () {
+    effects.confetti.startScreenEffect()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gold_Feather, function (sprite, otherSprite) {
     info.changeScoreBy(100)
     sprites.destroy(otherSprite)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    info.changeLifeBy(-1)
+})
+let feather4: Sprite = null
+let Featther3: Sprite = null
 let feather: Sprite = null
 let feather_2: Sprite = null
 scene.setBackgroundImage(assets.image`muotin range`)
+info.setLife(6)
 let mySprite = sprites.create(assets.image`bird`, SpriteKind.Player)
 animation.runImageAnimation(
 mySprite,
@@ -42,6 +66,32 @@ game.onUpdateInterval(randint(10000, 20000), function () {
         animation.runImageAnimation(
         feather,
         assets.animation`moving feather`,
+        500,
+        true
+        )
+    }
+})
+game.onUpdateInterval(randint(100000, 100000), function () {
+    for (let index = 0; index < 1; index++) {
+        Featther3 = sprites.create(assets.image`black bride1`, SpriteKind.diamond_feather)
+        Featther3.setVelocity(80, 160)
+        Featther3.setPosition(randint(0, scene.screenWidth()), 0)
+        animation.runImageAnimation(
+        Featther3,
+        assets.animation`moving feather1`,
+        500,
+        true
+        )
+    }
+})
+game.onUpdateInterval(randint(100000, 150000), function () {
+    for (let index = 0; index < 1; index++) {
+        feather4 = sprites.create(assets.image`black bride2`, SpriteKind.Cursed_feather)
+        feather4.follow(mySprite, 40)
+        feather4.setPosition(randint(0, scene.screenWidth()), 0)
+        animation.runImageAnimation(
+        feather4,
+        assets.animation`moving feather2`,
         500,
         true
         )
