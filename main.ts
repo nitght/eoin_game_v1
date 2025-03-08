@@ -6,15 +6,15 @@ namespace SpriteKind {
 }
 info.onScore(100000, function () {
     effects.confetti.startScreenEffect()
+    scene.setBackgroundImage(assets.image`clouds0`)
+})
+info.onScore(50000, function () {
+    effects.confetti.startScreenEffect()
     scene.setBackgroundImage(assets.image`clouds`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.diamond_feather, function (sprite, otherSprite) {
     info.changeScoreBy(10000)
     sprites.destroy(otherSprite)
-})
-info.onScore(200000, function () {
-    effects.confetti.startScreenEffect()
-    scene.setBackgroundImage(assets.image`clouds`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Silver_Feather, function (sprite, otherSprite) {
     info.changeScoreBy(50)
@@ -31,6 +31,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite
     sprites.destroy(otherSprite)
     info.changeLifeBy(-1)
 })
+let heart: Sprite = null
 let feather4: Sprite = null
 let Featther3: Sprite = null
 let feather: Sprite = null
@@ -95,5 +96,12 @@ game.onUpdateInterval(randint(100000, 150000), function () {
         500,
         true
         )
+    }
+})
+game.onUpdateInterval(randint(100000, 150000), function () {
+    for (let index = 0; index < 1; index++) {
+        heart = sprites.create(assets.image`black bride2`, SpriteKind.Cursed_feather)
+        Featther3.setVelocity(20, 40)
+        Featther3.setVelocity(20, 40)
     }
 })
