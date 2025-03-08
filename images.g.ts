@@ -221,25 +221,6 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 . 2 . . . . . . 2 . . . . 2 2 . 
 2 . . . . . . . . . . . . . . . 
 `;
-            case "image8":
-            case "bird1":return img`
-. . . . . . . 5 5 . . . . . . . 
-. . . . . . 5 . . 5 . . . . . . 
-. 1 1 . . . . 5 5 . . . . 1 1 . 
-d 1 1 1 2 2 . . . . 2 2 1 1 1 d 
-1 d 1 2 2 2 2 . . 2 2 2 2 1 d 1 
-1 1 2 2 2 2 2 2 2 2 2 2 2 2 1 1 
-d 1 2 2 2 2 2 2 2 2 2 2 2 2 1 d 
-1 d 2 2 2 2 2 2 2 2 2 2 2 2 d 1 
-1 . . 2 2 2 2 2 2 2 2 2 2 . . 1 
-. . . . 2 2 2 2 2 2 2 2 . . . . 
-. . . . . 2 2 2 2 2 2 . . . . . 
-. . . . . . 2 2 2 2 . . . . . . 
-. . . . . . . 2 2 . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`;
             case "dF,^j~:IXKpTWzC78f/g":
             case "clouds":return img`
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -485,6 +466,25 @@ ccccccccccccccccccc9eebbbbbbccccccccccccc999966666666668888888888888888888888ddd
 ccccccccccccccccccc9bbbbbbbbcccccccccccccc66666666666888888666668888888888888ddddddddbddd8888bbbbbbbbbbcccccccccccccc888888888888bbbb9cccccccccccccccccccccccccc
 cccccccccccccccccccbbbbbbbbbccccccccccccccccc666666668888888888888888888888888888d88888888888bbbbbbbbbbcccccccccccccc888888888888bbbb9cccccccccccccccccccccccccc
 cccccccccccccccccccbbbbbbbbbccccccccccccccccc666666668888888888888888888888888888d88888888888bbbbbbbbbbcccccccccccccc888888888888bbbb9cccccccccccccccccccccccccc
+`;
+            case "image8":
+            case "bird1":return img`
+. . . . . . . 5 5 . . . . . . . 
+. . . . . . 5 . . 5 . . . . . . 
+. 1 1 . . . . 5 5 . . . . 1 1 . 
+d 1 1 1 2 2 . . . . 2 2 1 1 1 d 
+1 d 1 2 2 2 2 . . 2 2 2 2 1 d 1 
+1 1 2 2 2 2 2 2 2 2 2 2 2 2 1 1 
+d 1 2 2 2 2 2 2 2 2 2 2 2 2 1 d 
+1 d 2 2 2 2 2 2 2 2 2 2 2 2 d 1 
+1 . . 2 2 2 2 2 2 2 2 2 2 . . 1 
+. . . . 2 2 2 2 2 2 2 2 . . . . 
+. . . . . 2 2 2 2 2 2 . . . . . 
+. . . . . . 2 2 2 2 . . . . . . 
+. . . . . . . 2 2 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 `;
         }
         return null;

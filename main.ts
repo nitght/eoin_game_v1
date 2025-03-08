@@ -3,14 +3,19 @@ namespace SpriteKind {
     export const Silver_Feather = SpriteKind.create()
     export const diamond_feather = SpriteKind.create()
     export const Cursed_feather = SpriteKind.create()
+    export const heart = SpriteKind.create()
 }
 info.onScore(100000, function () {
-    effects.confetti.startScreenEffect()
+    effects.starField.startScreenEffect()
     scene.setBackgroundImage(assets.image`clouds0`)
 })
 info.onScore(50000, function () {
-    effects.confetti.startScreenEffect()
+    effects.clouds.startScreenEffect()
     scene.setBackgroundImage(assets.image`clouds`)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.heart, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    info.changeLifeBy(1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.diamond_feather, function (sprite, otherSprite) {
     info.changeScoreBy(10000)
@@ -31,10 +36,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite
     sprites.destroy(otherSprite)
     info.changeLifeBy(-1)
 })
-let heart: Sprite = null
 let feather4: Sprite = null
 let Featther3: Sprite = null
 let feather: Sprite = null
+let heart: Sprite = null
 let feather_2: Sprite = null
 scene.setBackgroundImage(assets.image`muotin range`)
 info.setLife(6)
@@ -57,6 +62,13 @@ game.onUpdateInterval(randint(5000, 10000), function () {
         500,
         true
         )
+    }
+})
+game.onUpdateInterval(randint(200000, 300000), function () {
+    for (let index = 0; index < 1; index++) {
+        heart = sprites.create(assets.image`bird1`, SpriteKind.heart)
+        heart.setVelocity(10, 20)
+        heart.setPosition(randint(0, scene.screenWidth()), 0)
     }
 })
 game.onUpdateInterval(randint(10000, 20000), function () {
@@ -96,12 +108,5 @@ game.onUpdateInterval(randint(100000, 150000), function () {
         500,
         true
         )
-    }
-})
-game.onUpdateInterval(randint(100000, 150000), function () {
-    for (let index = 0; index < 1; index++) {
-        heart = sprites.create(assets.image`black bride2`, SpriteKind.Cursed_feather)
-        Featther3.setVelocity(20, 40)
-        Featther3.setVelocity(20, 40)
     }
 })
