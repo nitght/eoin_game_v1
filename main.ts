@@ -25,12 +25,13 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Silver_Feather, function (sprite
     info.changeScoreBy(50)
     sprites.destroy(otherSprite)
 })
-info.onScore(0, function () {
-    effects.confetti.startScreenEffect()
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gold_Feather, function (sprite, otherSprite) {
     info.changeScoreBy(100)
     sprites.destroy(otherSprite)
+})
+info.onScore(20000, function () {
+    effects.confetti.startScreenEffect()
+    scene.setBackgroundImage(assets.image`muotin range`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
@@ -41,7 +42,7 @@ let Featther3: Sprite = null
 let feather: Sprite = null
 let heart: Sprite = null
 let feather_2: Sprite = null
-scene.setBackgroundImage(assets.image`muotin range`)
+scene.setBackgroundImage(assets.image`muotin range0`)
 info.setLife(6)
 let mySprite = sprites.create(assets.image`bird`, SpriteKind.Player)
 animation.runImageAnimation(
@@ -67,7 +68,7 @@ game.onUpdateInterval(randint(5000, 10000), function () {
 game.onUpdateInterval(randint(200000, 300000), function () {
     for (let index = 0; index < 1; index++) {
         heart = sprites.create(assets.image`bird1`, SpriteKind.heart)
-        heart.setVelocity(10, 20)
+        heart.setVelocity(20, 40)
         heart.setPosition(randint(0, scene.screenWidth()), 0)
     }
 })
