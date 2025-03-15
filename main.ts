@@ -29,6 +29,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Gold_Feather, function (sprite, 
     info.changeScoreBy(100)
     sprites.destroy(otherSprite)
 })
+info.onScore(5000, function () {
+    effects.confetti.startScreenEffect()
+    scene.setBackgroundImage(assets.image`muotin range1`)
+})
 info.onScore(20000, function () {
     effects.confetti.startScreenEffect()
     scene.setBackgroundImage(assets.image`muotin range`)
