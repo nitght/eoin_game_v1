@@ -32,6 +32,24 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Gold_Feather, function (sprite, 
 info.onScore(5000, function () {
     effects.confetti.startScreenEffect()
     scene.setBackgroundImage(assets.image`muotin range1`)
+    ename = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . . . 9 9 . . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . . . f 1 f f . . . . . . 
+        . . . . . . f 2 2 f . . . . . . 
+        . . . . . . f f 1 f . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
 })
 info.onScore(20000, function () {
     effects.confetti.startScreenEffect()
@@ -46,6 +64,7 @@ let Featther3: Sprite = null
 let feather: Sprite = null
 let heart: Sprite = null
 let feather_2: Sprite = null
+let ename: Sprite = null
 scene.setBackgroundImage(assets.image`muotin range0`)
 info.setLife(6)
 let mySprite = sprites.create(assets.image`bird`, SpriteKind.Player)
