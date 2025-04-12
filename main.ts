@@ -108,6 +108,29 @@ game.onUpdateInterval(randint(10000, 20000), function () {
         )
     }
 })
+game.onUpdateInterval(randint(10000, 20000), function () {
+    for (let index = 0; index < 1; index++) {
+        ename = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . 9 9 . . . . . . . 
+            . . . . . . 9 9 9 9 . . . . . . 
+            . . . . . . 9 9 9 9 . . . . . . 
+            . . . . . . f 1 f f . . . . . . 
+            . . . . . . f 2 2 f . . . . . . 
+            . . . . . . f f 1 f . . . . . . 
+            . . . . . . 9 9 9 9 . . . . . . 
+            . . . . . . 9 9 9 9 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Enemy)
+        ename.setVelocity(20, 40)
+    }
+})
 game.onUpdateInterval(randint(100000, 100000), function () {
     for (let index = 0; index < 1; index++) {
         Featther3 = sprites.create(assets.image`black bride1`, SpriteKind.diamond_feather)
