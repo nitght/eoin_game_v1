@@ -4,10 +4,15 @@ namespace SpriteKind {
     export const diamond_feather = SpriteKind.create()
     export const Cursed_feather = SpriteKind.create()
     export const heart = SpriteKind.create()
+    export const eagel = SpriteKind.create()
 }
 info.onScore(100000, function () {
     effects.starField.startScreenEffect()
     scene.setBackgroundImage(assets.image`clouds0`)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.eagel, function (sprite, otherSprite) {
+    info.changeLifeBy(-4)
+    sprites.destroy(eagle)
 })
 info.onScore(50000, function () {
     effects.clouds.startScreenEffect()
@@ -51,6 +56,7 @@ let feather: Sprite = null
 let heart: Sprite = null
 let feather_2: Sprite = null
 let ename: Sprite = null
+let eagle: Sprite = null
 scene.setBackgroundImage(assets.image`muotin range0`)
 info.setLife(6)
 let mySprite = sprites.create(assets.image`bird`, SpriteKind.Player)
@@ -61,9 +67,6 @@ assets.animation`flying bird`,
 true
 )
 controller.moveSprite(mySprite, 100, 100)
-game.onUpdateInterval(randint(0, 10), function () {
-	
-})
 game.onUpdateInterval(randint(5000, 10000), function () {
     for (let index = 0; index < 1; index++) {
         feather_2 = sprites.create(assets.image`black bride0`, SpriteKind.Silver_Feather)
@@ -99,6 +102,39 @@ game.onUpdateInterval(randint(5000, 10000), function () {
             `, SpriteKind.Enemy)
         ename.setVelocity(20, 40)
         ename.setPosition(randint(0, scene.screenWidth()), 0)
+    }
+})
+game.onUpdateInterval(randint(250000, 350000), function () {
+    for (let index = 0; index < 1; index++) {
+        eagle = sprites.create(img`
+            ..eeeeeffffeeeeee..........fffff....
+            eeffeeeeeefffeeeee......fff11111ff..
+            eeeffffeeeeeefffffffffff111111111f..
+            feeeeeffffffeeeffeeeeeee1111111111f.
+            fffeeeeeeeeffffeeeeeeeeee111111f11f.
+            eeffffeeeeeefeeeeeeeeeeeee111111111f
+            eeeeefffeeefeeeeeeeeeeeeeeefff11111f
+            ..eeeeefffffeeeeeeeeeeeeeef...ff555f
+            ..eeeeeeffeeeeeeeeeeeeeeef......f55f
+            .......ffeeeeeeeeeeeeeeeef......f55f
+            .......feeeeeeeeeeeeeeeff........ff.
+            ......feeeeeeeeeeeeeeff.............
+            .....ffeeeeeeeeeeefff...............
+            .....feeeeeeeefffff.................
+            .....feeeeeeeff5....................
+            .....feeeeeeef555...................
+            .....feeeeeff55555....555...........
+            .....feeefff..55555.555.55..........
+            .....fffff.....5555555...f..........
+            ................55555555..f.........
+            ..................555..55...........
+            ...................555..f...........
+            .....................55..f..........
+            .......................f............
+            ........................f...........
+            `, SpriteKind.eagel)
+        eagle.setVelocity(70, 80)
+        eagle.setPosition(randint(0, scene.screenWidth()), 0)
     }
 })
 game.onUpdateInterval(randint(200000, 300000), function () {
