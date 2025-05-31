@@ -32,28 +32,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Gold_Feather, function (sprite, 
 info.onScore(5000, function () {
     effects.confetti.startScreenEffect()
     scene.setBackgroundImage(assets.image`muotin range1`)
-    ename = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 1 1 . . . . . . . 
-        . . . . . . . 9 9 . . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . . . f 1 f f . . . . . . 
-        . . . . . . f 2 2 f . . . . . . 
-        . . . . . . f f 1 f . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
 })
 info.onScore(20000, function () {
     effects.confetti.startScreenEffect()
     scene.setBackgroundImage(assets.image`muotin range`)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    sprites.destroy(ename)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
@@ -75,6 +61,9 @@ assets.animation`flying bird`,
 true
 )
 controller.moveSprite(mySprite, 100, 100)
+game.onUpdateInterval(randint(0, 10), function () {
+	
+})
 game.onUpdateInterval(randint(5000, 10000), function () {
     for (let index = 0; index < 1; index++) {
         feather_2 = sprites.create(assets.image`black bride0`, SpriteKind.Silver_Feather)
@@ -88,27 +77,7 @@ game.onUpdateInterval(randint(5000, 10000), function () {
         )
     }
 })
-game.onUpdateInterval(randint(200000, 300000), function () {
-    for (let index = 0; index < 1; index++) {
-        heart = sprites.create(assets.image`bird1`, SpriteKind.heart)
-        heart.setVelocity(20, 40)
-        heart.setPosition(randint(0, scene.screenWidth()), 0)
-    }
-})
-game.onUpdateInterval(randint(10000, 20000), function () {
-    for (let index = 0; index < 1; index++) {
-        feather = sprites.create(assets.image`black bride`, SpriteKind.Gold_Feather)
-        feather.setVelocity(8, 16)
-        feather.setPosition(randint(0, scene.screenWidth()), 0)
-        animation.runImageAnimation(
-        feather,
-        assets.animation`moving feather`,
-        500,
-        true
-        )
-    }
-})
-game.onUpdateInterval(randint(10000, 20000), function () {
+game.onUpdateInterval(randint(5000, 10000), function () {
     for (let index = 0; index < 1; index++) {
         ename = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -129,6 +98,27 @@ game.onUpdateInterval(randint(10000, 20000), function () {
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Enemy)
         ename.setVelocity(20, 40)
+        ename.setPosition(randint(0, scene.screenWidth()), 0)
+    }
+})
+game.onUpdateInterval(randint(200000, 300000), function () {
+    for (let index = 0; index < 1; index++) {
+        heart = sprites.create(assets.image`bird1`, SpriteKind.heart)
+        heart.setVelocity(20, 40)
+        heart.setPosition(randint(0, scene.screenWidth()), 0)
+    }
+})
+game.onUpdateInterval(randint(10000, 20000), function () {
+    for (let index = 0; index < 1; index++) {
+        feather = sprites.create(assets.image`black bride`, SpriteKind.Gold_Feather)
+        feather.setVelocity(8, 16)
+        feather.setPosition(randint(0, scene.screenWidth()), 0)
+        animation.runImageAnimation(
+        feather,
+        assets.animation`moving feather`,
+        500,
+        true
+        )
     }
 })
 game.onUpdateInterval(randint(100000, 100000), function () {
