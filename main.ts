@@ -58,9 +58,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite
 let feather4: Sprite = null
 let Featther3: Sprite = null
 let ename2: Sprite = null
-let feather: Sprite = null
+let projectile: Sprite = null
 let ename3: Sprite = null
-let projectile2: Sprite = null
+let feather: Sprite = null
 let heart: Sprite = null
 let ename: Sprite = null
 let feather_2: Sprite = null
@@ -111,32 +111,12 @@ game.onUpdateInterval(randint(5000, 10000), function () {
         ename.setPosition(randint(0, scene.screenWidth()), 0)
     }
 })
-game.onUpdateInterval(randint(200000, 300000), function () {
+game.onUpdateInterval(randint(20000, 30000), function () {
     for (let index = 0; index < 1; index++) {
         heart = sprites.create(assets.image`bird1`, SpriteKind.heart)
         heart.setVelocity(20, 40)
         heart.setPosition(randint(0, scene.screenWidth()), 0)
     }
-})
-game.onUpdateInterval(randint(1000, 1000), function () {
-    projectile2 = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 6 . . . . . . . . 
-        . . . . . . 6 6 6 . . . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . 6 6 6 6 6 6 6 . . . . . 
-        . . . 6 6 6 6 6 6 6 6 6 . . . . 
-        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
-        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
-        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
-        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
-        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
-        . . . 6 6 6 6 6 6 6 6 6 . . . . 
-        . . . . 6 6 6 6 6 6 6 . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, ename3, 0, 50)
 })
 game.onUpdateInterval(randint(10000, 20000), function () {
     for (let index = 0; index < 1; index++) {
@@ -174,6 +154,28 @@ game.onUpdateInterval(randint(7000, 14000), function () {
         ename3.setVelocity(0, 0)
         ename3.setPosition(randint(0, scene.screenWidth()), 0)
     }
+})
+game.onUpdateInterval(500, function () {
+    projectile = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 6 . . . . . . . . 
+        . . . . . . 6 6 6 . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . 6 6 6 6 6 6 6 . . . . . 
+        . . . 6 6 6 6 6 6 6 6 6 . . . . 
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+        . . . 6 6 6 6 6 6 6 6 6 . . . . 
+        . . . . 6 6 6 6 6 6 6 . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Projectile)
+    projectile.setPosition(ename3.x, ename3.y)
+    projectile.setVelocity(0, 50)
 })
 game.onUpdateInterval(randint(25000, 35000), function () {
     for (let index = 0; index < 1; index++) {
@@ -231,13 +233,5 @@ game.onUpdateInterval(randint(100000, 100000), function () {
 game.onUpdateInterval(randint(100000, 150000), function () {
     for (let index = 0; index < 1; index++) {
         feather4 = sprites.create(assets.image`black bride2`, SpriteKind.Cursed_feather)
-        feather4.follow(mySprite, 40)
-        feather4.setPosition(randint(0, scene.screenWidth()), 0)
-        animation.runImageAnimation(
-        feather4,
-        assets.animation`moving feather2`,
-        500,
-        true
-        )
     }
 })
