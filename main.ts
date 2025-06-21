@@ -233,5 +233,13 @@ game.onUpdateInterval(randint(100000, 100000), function () {
 game.onUpdateInterval(randint(100000, 150000), function () {
     for (let index = 0; index < 1; index++) {
         feather4 = sprites.create(assets.image`black bride2`, SpriteKind.Cursed_feather)
+        feather4.follow(mySprite, 40)
+        feather4.setPosition(randint(0, scene.screenWidth()), 0)
+        animation.runImageAnimation(
+        feather4,
+        assets.animation`moving feather2`,
+        500,
+        true
+        )
     }
 })
