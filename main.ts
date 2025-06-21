@@ -5,6 +5,7 @@ namespace SpriteKind {
     export const Cursed_feather = SpriteKind.create()
     export const heart = SpriteKind.create()
     export const ename2 = SpriteKind.create()
+    export const ename3 = SpriteKind.create()
 }
 info.onScore(100000, function () {
     effects.starField.startScreenEffect()
@@ -20,7 +21,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.heart, function (sprite, otherSp
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.ename2, function (sprite, otherSprite) {
     info.changeLifeBy(-3)
-    sprites.destroy(ename)
+    sprites.destroy(ename2)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.diamond_feather, function (sprite, otherSprite) {
     info.changeScoreBy(10000)
@@ -52,11 +53,13 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite
 })
 let feather4: Sprite = null
 let Featther3: Sprite = null
+let projectile2: Sprite = null
+let ename3: Sprite = null
 let feather: Sprite = null
 let heart: Sprite = null
 let feather_2: Sprite = null
-let ename2: Sprite = null
 let ename: Sprite = null
+let ename2: Sprite = null
 scene.setBackgroundImage(assets.image`muotin range0`)
 info.setLife(6)
 let mySprite = sprites.create(assets.image`bird`, SpriteKind.Player)
@@ -162,6 +165,48 @@ game.onUpdateInterval(randint(10000, 20000), function () {
         500,
         true
         )
+    }
+})
+game.onUpdateInterval(randint(7000, 14000), function () {
+    for (let index = 0; index < 1; index++) {
+        ename3 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . d d d d . . d d d d d . . 
+            . . d d d d d d d d d d d d . . 
+            . . d d d f d d d d f d d d . . 
+            . . d d d f d d d d f d d d d . 
+            . d d d 6 d 6 d d 6 d 6 d d d . 
+            . d d d d d d d d d d d d d d . 
+            . d d d d d d f f d d d d d d . 
+            . d d d d d f d d f d d d d . . 
+            . . . . . d d d d d d d d . . . 
+            . . . . . . d d . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.ename3)
+        ename3.setVelocity(0, 0)
+        ename3.setPosition(randint(0, scene.screenWidth()), 0)
+        projectile2 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 6 . . . . . . . . 
+            . . . . . . 6 6 6 . . . . . . . 
+            . . . . . 6 6 6 6 6 . . . . . . 
+            . . . . 6 6 6 6 6 6 6 . . . . . 
+            . . . 6 6 6 6 6 6 6 6 6 . . . . 
+            . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+            . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+            . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+            . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+            . . 6 6 6 6 6 6 6 6 6 6 6 . . . 
+            . . . 6 6 6 6 6 6 6 6 6 . . . . 
+            . . . . 6 6 6 6 6 6 6 . . . . . 
+            . . . . . 6 6 6 6 6 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, ename3, 0, 50)
     }
 })
 game.onUpdateInterval(randint(100000, 100000), function () {
