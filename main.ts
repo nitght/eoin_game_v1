@@ -58,9 +58,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite
 let feather4: Sprite = null
 let Featther3: Sprite = null
 let ename2: Sprite = null
-let projectile: Sprite = null
 let ename3: Sprite = null
 let feather: Sprite = null
+let projectile: Sprite = null
 let heart: Sprite = null
 let ename: Sprite = null
 let feather_2: Sprite = null
@@ -116,6 +116,13 @@ game.onUpdateInterval(randint(20000, 30000), function () {
         heart = sprites.create(assets.image`bird1`, SpriteKind.heart)
         heart.setVelocity(20, 40)
         heart.setPosition(randint(0, scene.screenWidth()), 0)
+    }
+})
+forever(function () {
+    for (let value of sprites.allOfKind(projectile.kind())) {
+        if (value.y > 10 + scene.screenHeight()) {
+            sprites.destroy(value)
+        }
     }
 })
 game.onUpdateInterval(randint(10000, 20000), function () {
