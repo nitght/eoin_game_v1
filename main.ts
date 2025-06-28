@@ -7,6 +7,7 @@ namespace SpriteKind {
     export const ename2 = SpriteKind.create()
     export const ename3 = SpriteKind.create()
     export const enamy = SpriteKind.create()
+    export const ename4 = SpriteKind.create()
 }
 info.onScore(100000, function () {
     effects.starField.startScreenEffect()
@@ -64,6 +65,7 @@ let feather4: Sprite = null
 let ename_5: Sprite = null
 let Featther3: Sprite = null
 let ename2: Sprite = null
+let ename_4: Sprite = null
 let ename3: Sprite = null
 let feather: Sprite = null
 let projectile: Sprite = null
@@ -189,6 +191,28 @@ game.onUpdateInterval(500, function () {
         `, SpriteKind.Projectile)
     projectile.setPosition(ename3.x, ename3.y)
     projectile.setVelocity(0, 50)
+})
+game.onUpdateInterval(randint(14000, 24000), function () {
+    for (let index = 0; index < 1; index++) {
+        ename_4 = sprites.create(img`
+            ............................................................
+            ............................................................
+            ............................................................
+            ............................................................
+            ............................................................
+            ..111.......................................................
+            ..1111...........................................111.111111.
+            ..111111122222222222222222222222222222222222222211111111f111
+            .1111111114444444444444444444444444444444444444411f111111111
+            111f11111115555555555555555555555555555555555555111111f1111.
+            1111111f11177777777777777777777777777777777777771111fff1111.
+            111f11111119999999999999999999999999999999999999111111111...
+            ..11ff111888888888888888888888888888888888888888888811111...
+            ....11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa11.....
+            ............................................................
+            ............................................................
+            `, SpriteKind.ename4)
+    }
 })
 game.onUpdateInterval(randint(25000, 35000), function () {
     for (let index = 0; index < 1; index++) {
