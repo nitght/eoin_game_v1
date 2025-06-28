@@ -45,6 +45,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Gold_Feather, function (sprite, 
     info.changeScoreBy(100)
     sprites.destroy(otherSprite)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.ename4, function (sprite, otherSprite) {
+    info.changeLifeBy(-2)
+    sprites.destroy(otherSprite)
+})
 info.onScore(5000, function () {
     effects.confetti.startScreenEffect()
     scene.setBackgroundImage(assets.image`muotin range1`)
@@ -212,6 +216,8 @@ game.onUpdateInterval(randint(14000, 24000), function () {
             ............................................................
             ............................................................
             `, SpriteKind.ename4)
+        ename_4.setVelocity(50, 0)
+        ename_4.setPosition(0, randint(0, scene.screenHeight()))
     }
 })
 game.onUpdateInterval(randint(25000, 35000), function () {
