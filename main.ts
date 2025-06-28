@@ -6,6 +6,7 @@ namespace SpriteKind {
     export const heart = SpriteKind.create()
     export const ename2 = SpriteKind.create()
     export const ename3 = SpriteKind.create()
+    export const enamy = SpriteKind.create()
 }
 info.onScore(100000, function () {
     effects.starField.startScreenEffect()
@@ -25,6 +26,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.ename2, function (sprite, otherS
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.diamond_feather, function (sprite, otherSprite) {
     info.changeScoreBy(10000)
+    sprites.destroy(otherSprite)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.enamy, function (sprite, otherSprite) {
+    info.changeLifeBy(-3)
     sprites.destroy(otherSprite)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Silver_Feather, function (sprite, otherSprite) {
@@ -56,6 +61,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Cursed_feather, function (sprite
     sprites.destroy(otherSprite)
 })
 let feather4: Sprite = null
+let ename_5: Sprite = null
 let Featther3: Sprite = null
 let ename2: Sprite = null
 let ename3: Sprite = null
@@ -65,7 +71,7 @@ let heart: Sprite = null
 let ename: Sprite = null
 let feather_2: Sprite = null
 scene.setBackgroundImage(assets.image`muotin range0`)
-info.setLife(6)
+info.setLife(9)
 let mySprite = sprites.create(assets.image`bird`, SpriteKind.Player)
 animation.runImageAnimation(
 mySprite,
@@ -235,6 +241,38 @@ game.onUpdateInterval(randint(100000, 100000), function () {
         500,
         true
         )
+    }
+})
+game.onUpdateInterval(randint(50000, 90000), function () {
+    for (let index = 0; index < 1; index++) {
+        ename_5 = sprites.create(img`
+            ........................
+            ........................
+            ........................
+            ...........eeeee.eeeee..
+            ..........eedddeeedddee.
+            ..........eddddddddddde.
+            ..........eddfdddddfdde.
+            ..........eddfdddddfdde.
+            ..........edddd555dddde.
+            .eeeeee...eeddd555dddee.
+            eeeeeeeee..eeeee5eeeee..
+            eeeeeeeeeee..eeeeeee....
+            eeeeeeeeeeeeeeeeeeee....
+            .eeeeeeeeeeeeeeeeeee....
+            ........eeeeeeeeeee.....
+            .........eeeeeeeee......
+            ........eeeeeeeee.......
+            ........eeeeeee.........
+            ........5..5............
+            .....555...5............
+            ......55..555...........
+            .....5.5.5.5.5..........
+            ........................
+            ........................
+            `, SpriteKind.enamy)
+        ename_5.follow(mySprite, 60)
+        ename_5.setPosition(randint(0, scene.screenWidth()), 0)
     }
 })
 game.onUpdateInterval(randint(100000, 150000), function () {
